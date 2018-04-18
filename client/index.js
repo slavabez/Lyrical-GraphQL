@@ -1,4 +1,5 @@
 import React from "react";
+import "./style/style.css";
 import ReactDOM from "react-dom";
 import { Router, Route, hashHistory, IndexRoute } from "react-router";
 import ApolloClient from "apollo-client";
@@ -9,7 +10,9 @@ import SongCreate from "./components/SongCreate";
 import SongList from "./components/SongList";
 import SongDetail from "./components/SongDetail";
 
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  dataIdFromObject: o => o.id
+});
 
 
 
