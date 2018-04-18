@@ -7,8 +7,18 @@ class LyricList extends Component {
     super(props);
   }
 
-  handleLikePress(id) {
-    this.props.mutate({ variables: { id } });
+  handleLikePress(id, likes) {
+    this.props.mutate({
+      variables: { id },
+      optimisticResponse: {
+        __typename: "Mutation",
+        likeLyric: {
+          id,
+          __typename: "LyricType",
+          likes: likes + 1
+        }
+      }
+    });
   }
 
   renderLyrics() {
@@ -26,7 +36,7 @@ class LyricList extends Component {
           <i
             className="material-icons text-blue"
             onClick={() => {
-              this.handleLikePress(id);
+              this.handleLikePress(id, likes);
             }}
           >
             thumb_up

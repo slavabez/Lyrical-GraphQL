@@ -37,6 +37,7 @@ class SongCreate extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Link to="/">Back</Link>
@@ -54,7 +55,7 @@ class SongCreate extends Component {
   }
 }
 
-const mutation = gql`
+const addSongMutation = gql`
   mutation AddSong($title: String) {
     addSong(title: $title) {
       id
@@ -63,4 +64,4 @@ const mutation = gql`
   }
 `;
 
-export default graphql(mutation)(SongCreate);
+export default graphql(addSongMutation)(SongCreate);
